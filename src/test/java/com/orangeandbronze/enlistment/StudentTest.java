@@ -19,7 +19,8 @@ class StudentTest {
     final Room ROOM201_5 = new Room("ROOM201", 5);
     final Subject MATH101_3_LECTURE = new Subject("MATH101", 3, LECTURE);
     final Subject MATH201_2_LECTURE = new Subject("MATH201", 2, LECTURE);
-
+    final Subject ALGEBRA101_3_LECTURE = new Subject("ALGEBRA101", 3, LECTURE,
+                                                        List.of(MATH101_3_LECTURE, MATH201_2_LECTURE));
 
     @Test
     void enlist_1_student_in_2_sections_no_conflict() {
@@ -88,5 +89,13 @@ class StudentTest {
         Section section1 = new Section("A", MTH_0830, ROOM101_5, MATH101_3_LECTURE);
 
         assertDoesNotThrow(() -> student.enlist(section1));
+    }
+
+    @Test
+    void enlist_1_student_in_1_section_does_not_meet_prerequisite_in_subject_with_prerequisite() {
+        Student student = new Student(1);
+        Section section1 = new Section("A", MTH_0830, ROOM101_5, ALGEBRA101_3_LECTURE);
+
+        assertThrows(SubjectConflictException.class, () -> student.enlist(section1));
     }
 }
