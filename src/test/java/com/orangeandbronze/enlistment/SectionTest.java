@@ -20,22 +20,22 @@ public class SectionTest {
 
     @Test
     public void testCanShareRoomWithSameRoom() {
-        Section section1 = new Section("Math", "MATH101", MTH_H0830, ROOM_101);
-        Section section2 = new Section("Science", "SCI101", MTH_H1300, ROOM_101);
+        Section section1 = new Section("Math", MTH_H0830, ROOM_101, Subject.NONE);
+        Section section2 = new Section("Science", MTH_H1300, ROOM_101, Subject.NONE);
 
         assertTrue(section1.canShareRoomWith(section2));
     }
 
     @Test
     public void testCannotShareRoomWithDifferentRoom() {
-        Section section1 = new Section("Math", "MATH101", MTH_H0830, ROOM_101);
-        Section section2 = new Section("Science", "SCI101", MTH_H1300, ROOM_102);
+        Section section1 = new Section("Math", MTH_H0830, ROOM_101, Subject.NONE);
+        Section section2 = new Section("Science", MTH_H1300, ROOM_102, Subject.NONE);
 
         assertFalse(section1.canShareRoomWith(section2));
     }
 
-    @Test
+    /*@Test
     void new_section_with_instructor_conflict () {
 
-    }
+    }*/
 }
