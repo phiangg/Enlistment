@@ -21,6 +21,13 @@ class Student {
         this.sections.removeIf(Objects::isNull);
     }
 
+    public void enlist(Section section) {
+        if (section == null)
+            throw new NullPointerException("Section cannot be null");
+
+        sections.add(section);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
