@@ -57,10 +57,5 @@ public class Subject {
     public int hashCode() {
         return subjectID != null ? subjectID.hashCode() : 0;
     }
-
-    public static void main(String[] args) {
-        Subject test = new Subject("MATH101", 1, SubjectType.LECTURE);
-        System.out.println(test.units);
-    }
 }
 
