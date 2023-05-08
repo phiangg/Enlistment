@@ -1,14 +1,15 @@
 package com.orangeandbronze.enlistment;
 
+import org.apache.commons.lang3.*;
+import static org.apache.commons.lang3.StringUtils.*;
+import static org.apache.commons.lang3.Validate.*;
+
 class Section {
     private final String sectionID;
 
     Section(String sectionID) {
-        if (sectionID == null)
-            throw new NullPointerException("Section ID cannot be null");
-
-        if (sectionID.trim().equals(""))
-            throw new IllegalArgumentException("Section was empty or whitespace");
+        notBlank(sectionID, "Section ID cannot be null, empty, or whitespace");
+        isTrue(isAlphanumeric(sectionID), "Section ID must be alphanumeric, was: " + sectionID);
 
         this.sectionID = sectionID;
     }
