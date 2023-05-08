@@ -2,15 +2,16 @@ package com.orangeandbronze.enlistment;
 
 import static org.apache.commons.lang3.Validate.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 class Student {
 
     private final int studentNumber;
     private final Collection<Section> sections;
+
+    Student (int studentNumber) {
+        this(studentNumber, Collections.emptyList());
+    }
 
     Student(int studentNumber, Collection<Section> sections) {
         if (studentNumber < 0)

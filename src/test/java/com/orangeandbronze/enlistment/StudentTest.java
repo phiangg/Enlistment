@@ -6,16 +6,22 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import static com.orangeandbronze.enlistment.Days.*;
+import static com.orangeandbronze.enlistment.Period.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentTest {
 
+    final Schedule MTH_0830 = new Schedule(MTH, H0830);
+    final Schedule TF_1300 = new Schedule(TF, H1300);
+
+
     @Test
     void enlist_1_student_in_2_sections_no_conflict() {
         //Given 1 student & 2 sections w/ no conflict
-        Student student = new Student(1, Collections.emptyList());
-        Section section1 = new Section("A", new Schedule(Days.MTH, Period.H0830));
-        Section section2 = new Section("B", new Schedule(Days.TF, Period.H1300));
+        Student student = new Student(1);
+        Section section1 = new Section("A", MTH_0830);
+        Section section2 = new Section("B", TF_1300);
 
         //When the student enlists in both sections
         student.enlist(section1);
@@ -32,9 +38,9 @@ class StudentTest {
     @Test
     void enlist_1_student_in_2_sections_same_schedule() {
         //Given 1 student with no sections and 2 sections same schedule
-        Student student = new Student(1, Collections.emptyList());
-        Section section1 = new Section("A", new Schedule(Days.MTH, Period.H0830));
-        Section section2 = new Section("B", new Schedule(Days.MTH, Period.H0830));
+        Student student = new Student(1);
+        Section section1 = new Section("A", MTH_0830);
+        Section section2 = new Section("B", MTH_0830);
 
         //When students enlist in both
         student.enlist(section1);
