@@ -8,20 +8,29 @@ class Student {
 
     private final int studentNumber;
     private final Collection<Section> sections;
+    private final Collection<Subject> subjectsTaken;
 
     Student (int studentNumber) {
-        this(studentNumber, Collections.emptyList());
+        this(studentNumber, Collections.emptyList(), Collections.emptyList());
     }
 
     Student(int studentNumber, Collection<Section> sections) {
+        this(studentNumber, sections, Collections.emptyList());
+    }
+
+    Student(int studentNumber, Collection<Section> sections, Collection<Subject> subjectsTaken) {
+
         if (studentNumber < 0)
             throw new IllegalArgumentException("Student Number must be non-negative, was " + studentNumber);
 
         notNull(sections, "Section cannot be null");
+        notNull(subjectsTaken, "Subjects taken cannot be null");
 
         this.studentNumber = studentNumber;
         this.sections = new HashSet<>(sections);
         this.sections.removeIf(Objects::isNull);
+        this.subjectsTaken = new HashSet<>(subjectsTaken);
+        this.subjectsTaken.removeIf(Objects::isNull);
     }
 
     public void enlist(Section newSection) {

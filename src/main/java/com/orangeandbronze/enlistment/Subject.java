@@ -1,5 +1,8 @@
 package com.orangeandbronze.enlistment;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
 
 import static org.apache.commons.lang3.StringUtils.*;
@@ -7,10 +10,20 @@ import static org.apache.commons.lang3.Validate.*;
 
 public class Subject {
     private final String subjectID;
+    private final int units;
+    private final SubjectType subjectType;
+    private final Collection<Subject> prerequisites;
 
-    public Subject(String subjectID) {
+    Subject(String subjectID, int units, SubjectType subjectType) {
+      this(subjectID, units, subjectType, Collections.emptyList());
+    }
+
+    Subject (String subjectID, int units, SubjectType subjectType, Collection<Subject> prerequisites) {
         isTrue(isAlphanumeric(subjectID), "Subject ID must be alphanumeric, was: " + subjectID);
         this.subjectID = subjectID;
+        this.units = units;
+        this.subjectType = subjectType;
+        this.prerequisites = new HashSet<>(prerequisites);
     }
 
     @Override
@@ -32,4 +45,8 @@ public class Subject {
     public int hashCode() {
         return subjectID != null ? subjectID.hashCode() : 0;
     }
+}
+
+enum SubjectType {
+    LABORATORY, LECTURE
 }
