@@ -31,6 +31,14 @@ class Section {
         }
     }
 
+    void checkForSubjectConflict(Section other) {
+        notNull(other);
+        if (this.subject.equals(other.subject)) {
+            throw new SubjectConflictException("Subject is in conflict between"
+                    + this + " and " + other + " at schedule " + schedule);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
