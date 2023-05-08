@@ -20,10 +20,14 @@ public class Subject {
 
     Subject (String subjectID, int units, SubjectType subjectType, Collection<Subject> prerequisites) {
         isTrue(isAlphanumeric(subjectID), "Subject ID must be alphanumeric, was: " + subjectID);
+        notNull(prerequisites);
+
         this.subjectID = subjectID;
         this.units = units;
         this.subjectType = subjectType;
+
         this.prerequisites = new HashSet<>(prerequisites);
+        this.prerequisites.removeIf(Objects::isNull);
     }
 
     @Override
