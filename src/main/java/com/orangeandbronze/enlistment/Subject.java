@@ -16,7 +16,7 @@ public class Subject {
     private final Collection<Subject> prerequisites;
 
     Subject (String subjectID) {
-        this(subjectID, 0, SubjectType.NONE);
+        this(subjectID, 0, SubjectType.LECTURE);
     }
     Subject(String subjectID, int units, SubjectType subjectType) {
       this(subjectID, units, subjectType, Collections.emptyList());
