@@ -7,8 +7,7 @@ class Section {
     private final String sectionID;
     private final Schedule schedule;
     private final Room room;
-
-
+    
     Section(String sectionID, Schedule schedule, Room room) {
 
         notBlank(sectionID, "Section ID cannot be null, empty, or whitespace");
