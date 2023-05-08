@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StudentTest {
 
-    final Schedule MTH_0830 = new Schedule(MTH, H0830);
-    final Schedule TF_1300 = new Schedule(TF, H1300);
+    final Schedule MTH_0830 = new Schedule(MTH, H0830, startTime, endTime);
+    final Schedule TF_1300 = new Schedule(TF, H1300, startTime, endTime);
     final Room ROOM101_5 = new Room("ROOM101", 5);
     final Room ROOM201_5 = new Room("ROOM201", 5);
     final Subject MATH101_3_LECTURE = new Subject("MATH101", 3, LECTURE);

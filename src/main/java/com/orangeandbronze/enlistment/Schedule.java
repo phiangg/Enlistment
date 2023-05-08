@@ -7,13 +7,25 @@ import static org.apache.commons.lang3.Validate.notNull;
 class Schedule {
     private final Days days;
     private final Period period;
+    private final LocalTime startTime;
+    private final LocalTime endTime;
 
-    Schedule(Days days, Period period) {
+    Schedule(Days days, Period period, LocalTime startTime, LocalTime endTime) {
         notNull(days);
         notNull(period);
 
         this.days = days;
         this.period = period;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
     }
 
     @Override
@@ -46,20 +58,10 @@ class Schedule {
     }
 
     public boolean overlapsWith(Schedule other) {
-        if (!days.equals(other.days)) {
-            return false;
-        }
-
-        LocalTime startTime = period.getStart().toLocalTime();
-        LocalTime endTime = period.getEnd().toLocalTime();
-
-        LocalTime otherStartTime = other.period.getStart().toLocalTime();
-        LocalTime otherEndTime = other.period.getEnd().toLocalTime();
-
-        return (startTime.isAfter(otherStartTime) && startTime.isBefore(otherEndTime)) ||
-                (endTime.isAfter(otherStartTime) && endTime.isBefore(otherEndTime)) ||
-                (startTime.equals(otherStartTime) && endTime.equals(otherEndTime));
+        return (this.startTime.isBefore(other.endTime) && this.endTime.isAfter(other.startTime)) ||
+                (other.startTime.isBefore(this.endTime) && other.endTime.isAfter(this.startTime));
     }
+
 
 
 }

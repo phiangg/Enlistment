@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SectionTest {
 
-    private final Schedule MTH_H0830 = new Schedule(MTH, H0830);
-    private final Schedule MTH_H1300 = new Schedule(MTH, H1300);
+    private final Schedule MTH_H0830 = new Schedule(MTH, H0830, startTime, endTime);
+    private final Schedule MTH_H1300 = new Schedule(MTH, H1300, startTime, endTime);
     private final Room ROOM_101 = new Room("101", 50);
     private final Room ROOM_102 = new Room("102", 60);
 

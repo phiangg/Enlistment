@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InstructorTest {
 
-    final Schedule MTH_0830 = new Schedule(MTH, H0830);
-    final Schedule TF_1300 = new Schedule(TF, H1300);
+    final Schedule MTH_0830 = new Schedule(MTH, H0830, startTime, endTime);
+    final Schedule TF_1300 = new Schedule(TF, H1300, startTime, endTime);
 
     @Test
     void assign_1_instructor_in_2_sections_no_conflict() {
