@@ -16,17 +16,24 @@ class Schedule {
 
     @Override
     public String toString() {
+
         return days + " " + period;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Schedule schedule = (Schedule) o;
 
-        if (days != schedule.days) return false;
+        if (days != schedule.days)
+
+            return false;
+
         return period == schedule.period;
     }
 
@@ -34,6 +41,7 @@ class Schedule {
     public int hashCode() {
         int result = days != null ? days.hashCode() : 0;
         result = 31 * result + (period != null ? period.hashCode() : 0);
+
         return result;
     }
 }

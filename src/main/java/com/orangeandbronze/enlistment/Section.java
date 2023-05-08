@@ -6,14 +6,19 @@ import static org.apache.commons.lang3.Validate.*;
 class Section {
     private final String sectionID;
     private final Schedule schedule;
+    private final Room room;
 
-    Section(String sectionID, Schedule schedule) {
+
+    Section(String sectionID, Schedule schedule, Room room) {
+
         notBlank(sectionID, "Section ID cannot be null, empty, or whitespace");
         isTrue(isAlphanumeric(sectionID), "Section ID must be alphanumeric, was: " + sectionID);
         notNull(schedule);
+        notNull(room);
 
         this.sectionID = sectionID;
         this.schedule = schedule;
+        this.room = room;
     }
 
     void checkForConflict(Section other) {
@@ -26,21 +31,29 @@ class Section {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Section section = (Section) o;
 
         return sectionID.equals(section.sectionID);
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
     @Override
     public int hashCode() {
+
         return sectionID.hashCode();
     }
 
     @Override
     public String toString() {
-        return sectionID;
+
+        return sectionID + "Room: " + room;
     }
 }
