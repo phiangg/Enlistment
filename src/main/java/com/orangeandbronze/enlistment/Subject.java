@@ -1,6 +1,7 @@
 package com.orangeandbronze.enlistment;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 
@@ -14,10 +15,7 @@ public class Subject {
     private final Collection<Subject> prerequisites;
 
     Subject(String subjectID, int units, SubjectType subjectType) {
-        isTrue(isAlphanumeric(subjectID), "Subject ID must be alphanumeric, was: " + subjectID);
-        this.subjectID = subjectID;
-        this.units = units;
-        this.subjectType = subjectType;
+      this(subjectID, units, subjectType, Collections.emptyList());
     }
 
     Subject (String subjectID, int units, SubjectType subjectType, Collection<Subject> prerequisites) {
