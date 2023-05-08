@@ -7,10 +7,14 @@ import static org.apache.commons.lang3.Validate.*;
 
 public class Subject {
     private final String subjectID;
+    private final int units;
+    private final SubjectType subjectType;
 
-    public Subject(String subjectID) {
+    Subject(String subjectID, int units, SubjectType subjectType) {
         isTrue(isAlphanumeric(subjectID), "Subject ID must be alphanumeric, was: " + subjectID);
         this.subjectID = subjectID;
+        this.units = units;
+        this.subjectType = subjectType;
     }
 
     @Override
@@ -32,4 +36,8 @@ public class Subject {
     public int hashCode() {
         return subjectID != null ? subjectID.hashCode() : 0;
     }
+}
+
+enum SubjectType {
+    LABORATORY, LECTURE
 }
