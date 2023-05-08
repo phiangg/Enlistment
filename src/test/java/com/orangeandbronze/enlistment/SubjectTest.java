@@ -12,7 +12,7 @@ public class SubjectTest {
 
     @Test
     void constructor_with_0_unit() {
-        assertThrows(InvalidUnitException.class, () -> new Subject("MATH101", 0, SubjectType.LECTURE));
+        assertDoesNotThrow(() -> new Subject("MATH101", 0, SubjectType.LECTURE));
     }
 
     @Test

@@ -27,8 +27,8 @@ public class Subject {
         notNull(subjectType);
         notNull(prerequisites);
 
-        if (units <= 0)
-            throw new InvalidUnitException("Unit must be a natural number, was: " + units);
+        if (units < 0)
+            throw new InvalidUnitException("Unit must be must be non-negative, was: " + units);
 
         this.subjectID = subjectID;
         this.units = units;
