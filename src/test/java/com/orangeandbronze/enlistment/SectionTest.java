@@ -2,6 +2,8 @@ package com.orangeandbronze.enlistment;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalTime;
+
 import static com.orangeandbronze.enlistment.Period.*;
 import static com.orangeandbronze.enlistment.Days.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -9,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SectionTest {
 
+    private LocalTime startTime;
+    private LocalTime endTime;
     private final Schedule MTH_H0830 = new Schedule(MTH, H0830, startTime, endTime);
     private final Schedule MTH_H1300 = new Schedule(MTH, H1300, startTime, endTime);
     private final Room ROOM_101 = new Room("101", 50);

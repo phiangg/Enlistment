@@ -2,6 +2,7 @@ package com.orangeandbronze.enlistment;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InstructorTest {
 
+    private LocalTime startTime;
+    private LocalTime endTime;
     final Schedule MTH_0830 = new Schedule(MTH, H0830, startTime, endTime);
     final Schedule TF_1300 = new Schedule(TF, H1300, startTime, endTime);
 

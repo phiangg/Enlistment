@@ -1,5 +1,6 @@
 package com.orangeandbronze.enlistment;
 
+import java.time.LocalTime;
 import java.util.Objects;
 
 import static org.apache.commons.lang3.StringUtils.*;
@@ -10,6 +11,8 @@ class Section {
     private final Schedule schedule;
     private final Room room;
     private final Subject subject;
+    private final LocalTime startTime;
+    private final LocalTime endTime;
 
 
     Section(String sectionID, Schedule schedule, Room room, Subject subject) {
@@ -23,6 +26,8 @@ class Section {
         this.schedule = schedule;
         this.room = room;
         this.subject = subject;
+        this.startTime = schedule.getStartTime();
+        this.endTime = schedule.getEndTime();
     }
 
     void checkForScheduleConflict(Section other) {
@@ -54,12 +59,13 @@ class Section {
         return this.subject;
     }
 
-    public Room getRoom() {
+    Room getRoom() {
+
         return room;
     }
 
     public boolean canShareRoomWith(Section other) {
-        return !schedule.overlapsWith(other.schedule) || room.equals(other.room);
+        return this.room.equals(other.room) && this.schedule.overlapsWith(other.schedule);
     }
 
     @Override
