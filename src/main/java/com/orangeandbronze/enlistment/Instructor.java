@@ -30,7 +30,7 @@ class Instructor {
 
     void assign(Section newSection) {
         notNull(newSection, "Section cannot be null");
-        assignedSections.forEach(currentSection -> currentSection.checkForConflict(newSection));
+        assignedSections.forEach(currentSection -> currentSection.checkForScheduleConflict(newSection));
         this.assignedSections.add(newSection);
     }
 

@@ -81,4 +81,12 @@ class StudentTest {
 
         assertThrows(SubjectConflictException.class, () -> student.enlist(section2));
     }
+
+    @Test
+    void enlist_1_student_in_1_section_subject_no_prerequisite() {
+        Student student = new Student(1);
+        Section section1 = new Section("A", MTH_0830, ROOM101_5, MATH101_3_LECTURE);
+
+        assertDoesNotThrow(() -> student.enlist(section1));
+    }
 }
