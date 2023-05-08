@@ -21,9 +21,11 @@
     - Miscellaneous fees are ₱3,000
     - Value Added Tax (VAT) is 12%
 
-- Student , Instructor -> Section
-- Section -> Room (enum)
-- Subject (enum)
+```
+Student , Instructor -> Section
+Section -> Room (enum)
+Subject (enum)
+```
 
 ```java
 Student(int studentNumber, Collection<Section> sections)
