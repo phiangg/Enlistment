@@ -55,6 +55,3 @@ public class Subject {
     }
 }
 
-enum SubjectType {
-    NONE, LABORATORY, LECTURE
-}
