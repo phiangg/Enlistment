@@ -46,6 +46,14 @@ class Student {
         sections.add(newSection);
     }
 
+    public void cancelEnlistedSection(Section sectionToCancel) {
+        notNull(sectionToCancel, "Section cannot be null");
+        if (!sections.contains(sectionToCancel)) {
+            throw new IllegalArgumentException("Section is not enlisted.");
+        }
+        sections.remove(sectionToCancel);
+    }
+
     public Collection<Section> getSections() {
         return new ArrayList<>(sections);
     }
