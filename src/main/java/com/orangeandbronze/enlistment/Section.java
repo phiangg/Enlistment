@@ -23,7 +23,7 @@ class Section {
         this.subject = subject;
     }
 
-    void checkForConflict(Section other) {
+    void checkForScheduleConflict(Section other) {
         notNull(other);
         if (this.schedule.equals(other.schedule)) {
             throw new ScheduleConflictException("Section is in conflict between"
