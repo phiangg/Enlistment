@@ -24,6 +24,7 @@ public class Subject {
 
     Subject (String subjectID, int units, SubjectType subjectType, Collection<Subject> prerequisites) {
         isTrue(isAlphanumeric(subjectID), "Subject ID must be alphanumeric, was: " + subjectID);
+        notNull(subjectType);
         notNull(prerequisites);
 
         if (units <= 0)
