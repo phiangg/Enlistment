@@ -20,8 +20,8 @@ class StudentTest {
     void enlist_1_student_in_2_sections_no_conflict() {
         //Given 1 student & 2 sections w/ no conflict
         Student student = new Student(1);
-        Section section1 = new Section("A", MTH_0830);
-        Section section2 = new Section("B", TF_1300);
+        Section section1 = new Section("A", MTH_0830, new Instructor(1));
+        Section section2 = new Section("B", TF_1300, new Instructor(2));
 
         //When the student enlists in both sections
         student.enlist(section1);
@@ -39,8 +39,8 @@ class StudentTest {
     void enlist_1_student_in_2_sections_same_schedule() {
         //Given 1 student with no sections and 2 sections same schedule
         Student student = new Student(1);
-        Section section1 = new Section("A", MTH_0830);
-        Section section2 = new Section("B", MTH_0830);
+        Section section1 = new Section("A", MTH_0830, new Instructor(1));
+        Section section2 = new Section("B", MTH_0830, new Instructor(2));
 
         //When students enlist in both
         student.enlist(section1);
