@@ -26,6 +26,9 @@ public class Subject {
         isTrue(isAlphanumeric(subjectID), "Subject ID must be alphanumeric, was: " + subjectID);
         notNull(prerequisites);
 
+        if (units <= 0)
+            throw new InvalidUnitException("Unit must be a natural number, was: " + units);
+
         this.subjectID = subjectID;
         this.units = units;
         this.subjectType = subjectType;
