@@ -1,14 +1,24 @@
 package com.orangeandbronze.enlistment;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Objects;
+
 class Student {
 
     private final int studentNumber;
+    private final Collection<Section> sections;
 
-    Student(int studentNumber) {
+    Student(int studentNumber, Collection<Section> sections) {
         if (studentNumber < 0)
             throw new IllegalArgumentException("Student Number must be non-negative, was " + studentNumber);
 
+        if (sections == null)
+            throw new NullPointerException("Sections cannot be null");
+
         this.studentNumber = studentNumber;
+        this.sections = new ArrayList<>(sections);
+        this.sections.removeIf(Objects::isNull);
     }
 
     @Override
