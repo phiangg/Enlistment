@@ -1,17 +1,19 @@
 package com.orangeandbronze.enlistment;
 
-import org.apache.commons.lang3.*;
 import static org.apache.commons.lang3.StringUtils.*;
 import static org.apache.commons.lang3.Validate.*;
 
 class Section {
     private final String sectionID;
+    private final Schedule schedule;
 
-    Section(String sectionID) {
+    Section(String sectionID, Schedule schedule) {
         notBlank(sectionID, "Section ID cannot be null, empty, or whitespace");
         isTrue(isAlphanumeric(sectionID), "Section ID must be alphanumeric, was: " + sectionID);
+        notNull(schedule);
 
         this.sectionID = sectionID;
+        this.schedule = schedule;
     }
 
     @Override
