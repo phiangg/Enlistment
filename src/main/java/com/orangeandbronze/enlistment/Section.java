@@ -16,6 +16,14 @@ class Section {
         this.schedule = schedule;
     }
 
+    void checkForConflict(Section other) {
+        notNull(other);
+        if (this.schedule.equals(other.schedule)) {
+            throw new ScheduleConflictException("Section is in conflict between"
+                    + this + " and " + other + " at schedule " + schedule);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -40,7 +40,6 @@ class StudentTest {
         student.enlist(section1);
 
         //Then at the 2nd enlistment, an exception will be thrown
-        assertThrows(Exception.class, () -> student.enlist(section2));
-
+        assertThrows(ScheduleConflictException.class, () -> student.enlist(section2));
     }
 }

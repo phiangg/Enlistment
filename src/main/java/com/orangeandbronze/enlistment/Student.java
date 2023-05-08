@@ -23,9 +23,10 @@ class Student {
         this.sections.removeIf(Objects::isNull);
     }
 
-    public void enlist(Section section) {
-        notNull(section, "Section cannot be null");
-        sections.add(section);
+    public void enlist(Section newSection) {
+        notNull(newSection, "Section cannot be null");
+        sections.forEach(currentSection -> currentSection.checkForConflict(newSection));
+        sections.add(newSection);
     }
 
     public Collection<Section> getSections() {
