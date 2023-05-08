@@ -9,11 +9,15 @@ import static org.apache.commons.lang3.StringUtils.*;
 import static org.apache.commons.lang3.Validate.*;
 
 public class Subject {
+    public static final Subject NONE = new Subject("NONE");
     private final String subjectID;
     private final int units;
     private final SubjectType subjectType;
     private final Collection<Subject> prerequisites;
 
+    Subject (String subjectID) {
+        this(subjectID, 0, SubjectType.NONE);
+    }
     Subject(String subjectID, int units, SubjectType subjectType) {
       this(subjectID, units, subjectType, Collections.emptyList());
     }
@@ -52,5 +56,5 @@ public class Subject {
 }
 
 enum SubjectType {
-    LABORATORY, LECTURE
+    NONE, LABORATORY, LECTURE
 }
