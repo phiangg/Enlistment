@@ -22,7 +22,7 @@ public class Subject {
       this(subjectID, units, subjectType, Collections.emptyList());
     }
 
-    Subject (String subjectID, int units, SubjectType subjectType, Collection<Subject> prerequisites) {
+    Subject (String subjectID, Integer units, SubjectType subjectType, Collection<Subject> prerequisites) {
         isTrue(isAlphanumeric(subjectID), "Subject ID must be alphanumeric, was: " + subjectID);
         notNull(subjectType);
         notNull(prerequisites);
@@ -56,6 +56,11 @@ public class Subject {
     @Override
     public int hashCode() {
         return subjectID != null ? subjectID.hashCode() : 0;
+    }
+
+    public static void main(String[] args) {
+        Subject test = new Subject("MATH101", 1, SubjectType.LECTURE);
+        System.out.println(test.units);
     }
 }
 
