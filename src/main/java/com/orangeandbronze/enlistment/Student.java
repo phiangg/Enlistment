@@ -1,7 +1,10 @@
 package com.orangeandbronze.enlistment;
 
+import static org.apache.commons.lang3.Validate.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 class Student {
@@ -12,19 +15,16 @@ class Student {
     Student(int studentNumber, Collection<Section> sections) {
         if (studentNumber < 0)
             throw new IllegalArgumentException("Student Number must be non-negative, was " + studentNumber);
-
-        if (sections == null)
-            throw new NullPointerException("Sections cannot be null");
+        
+        notNull(sections, "Section cannot be null");
 
         this.studentNumber = studentNumber;
-        this.sections = new ArrayList<>(sections);
+        this.sections = new HashSet<>(sections);
         this.sections.removeIf(Objects::isNull);
     }
 
     public void enlist(Section section) {
-        if (section == null)
-            throw new NullPointerException("Section cannot be null");
-
+        notNull(section, "Section cannot be null");
         sections.add(section);
     }
 
