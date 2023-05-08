@@ -121,7 +121,19 @@ class StudentTest {
                 () -> assertTrue(sections.contains(section1)),
                 () -> assertEquals(1, sections.size())
         );
+    }
+    @Test
+    void cancel_enlisted_section() {
+        // Given a student who has enlisted in a section
+        Student student = new Student(1);
+        Section section = new Section("A", MTH_0830, ROOM101_5, MATH101_3_LECTURE);
+        student.enlist(section);
 
+        // When the student cancels the enlisted section
+        student.cancelEnlistedSection(section);
 
+        // Then the section should be removed from the student's enlisted sections
+        Collection<Section> sections = student.getSections();
+        assertTrue(sections.isEmpty());
     }
 }
