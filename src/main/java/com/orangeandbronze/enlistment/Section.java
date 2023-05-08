@@ -39,6 +39,10 @@ class Section {
         }
     }
 
+    Subject getSubject() {
+        return this.subject;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)

@@ -108,7 +108,7 @@ class StudentTest {
     @Test
     void enlist_1_student_in_1_section_meet_prerequisite_in_subject_with_prerequisite() {
         Student student = new Student(1, Collections.emptyList(),
-                List.of(MATH101_3_LECTURE, MATH101_3_LECTURE));
+                List.of(MATH101_3_LECTURE, MATH201_2_LECTURE));
         Section section1 = new Section("A", MTH_0830, ROOM101_5, ALGEBRA101_3_LECTURE);
 
         student.enlist(section1);

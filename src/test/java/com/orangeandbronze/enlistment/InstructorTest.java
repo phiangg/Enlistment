@@ -20,7 +20,7 @@ class InstructorTest {
     @Test
     void assign_1_instructor_in_2_sections_no_conflict() {
         //Given 1 student & 2 sections w/ no conflict
-        Instructor instructor = new Instructor(1);
+        Instructor instructor = new Instructor(1, "John", "Doe");
         Section section1 = new Section("A", MTH_0830, new Room("TEST", 1), new Subject("MATH101", 1, LECTURE));
         Section section2 = new Section("B", TF_1300, new Room("TEST2" ,2), new Subject("MATH201", 2, LECTURE));
 
@@ -40,7 +40,7 @@ class InstructorTest {
     void assign_1_instructor_in_2_sections_same_schedule() {
         //Given 1 student with no sections and 2 sections same schedule
 
-        Instructor instructor = new Instructor(1);
+        Instructor instructor = new Instructor(1, "John", "Doe");
         Section section1 = new Section("A", MTH_0830, new Room("TEST1", 1), new Subject("ENGLISH101", 1, LECTURE));
         Section section2 = new Section("B", MTH_0830, new Room("TEST2", 2), new Subject("ENGLISH201", 2, LECTURE));
 

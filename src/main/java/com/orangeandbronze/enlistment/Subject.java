@@ -1,9 +1,6 @@
 package com.orangeandbronze.enlistment;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.*;
 import static org.apache.commons.lang3.Validate.*;
@@ -36,6 +33,16 @@ public class Subject {
 
         this.prerequisites = new HashSet<>(prerequisites);
         this.prerequisites.removeIf(Objects::isNull);
+    }
+
+    void checkForPrerequisite(Collection<Subject> subjects) {
+        if(!subjects.contains(this)){
+            throw new SubjectConflictException("The student haven't completed the prerequisite subject for " + this);
+        }
+    }
+
+    Collection<Subject> getPrerequisites() {
+        return new ArrayList<>(this.prerequisites);
     }
 
     @Override

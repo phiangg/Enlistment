@@ -35,8 +35,13 @@ class Student {
 
     public void enlist(Section newSection) {
         notNull(newSection, "Section cannot be null");
-        sections.forEach(currentSection -> currentSection.checkForScheduleConflict(newSection));
-        sections.forEach(currentSection -> currentSection.checkForSubjectConflict(newSection));
+        sections.forEach(currentSection -> {
+            currentSection.checkForScheduleConflict(newSection);
+            currentSection.checkForSubjectConflict(newSection);
+        });
+        newSection.getSubject().getPrerequisites().forEach(currSubj -> {
+            currSubj.checkForPrerequisite(this.subjectsTaken);
+        });
         sections.add(newSection);
     }
 
