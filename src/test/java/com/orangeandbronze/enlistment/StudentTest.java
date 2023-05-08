@@ -88,7 +88,13 @@ class StudentTest {
         Student student = new Student(1);
         Section section1 = new Section("A", MTH_0830, ROOM101_5, MATH101_3_LECTURE);
 
-        assertDoesNotThrow(() -> student.enlist(section1));
+        student.enlist(section1);
+
+        Collection<Section> sections = student.getSections();
+        assertAll(
+                () -> assertTrue(sections.contains(section1)),
+                () -> assertEquals(1, sections.size())
+        );
     }
 
     @Test
@@ -97,5 +103,22 @@ class StudentTest {
         Section section1 = new Section("A", MTH_0830, ROOM101_5, ALGEBRA101_3_LECTURE);
 
         assertThrows(SubjectConflictException.class, () -> student.enlist(section1));
+    }
+
+    @Test
+    void enlist_1_student_in_1_section_meet_prerequisite_in_subject_with_prerequisite() {
+        Student student = new Student(1, Collections.emptyList(),
+                List.of(MATH101_3_LECTURE, MATH101_3_LECTURE));
+        Section section1 = new Section("A", MTH_0830, ROOM101_5, ALGEBRA101_3_LECTURE);
+
+        student.enlist(section1);
+
+        Collection<Section> sections = student.getSections();
+        assertAll(
+                () -> assertTrue(sections.contains(section1)),
+                () -> assertEquals(1, sections.size())
+        );
+
+
     }
 }
