@@ -38,6 +38,7 @@ class Student {
         sections.forEach(currentSection -> {
             currentSection.checkForScheduleConflict(newSection);
             currentSection.checkForSubjectConflict(newSection);
+            currentSection.checkForRoomConflict(newSection);
         });
         newSection.getSubject().getPrerequisites().forEach(currSubj -> {
             currSubj.checkForPrerequisite(this.subjectsTaken);

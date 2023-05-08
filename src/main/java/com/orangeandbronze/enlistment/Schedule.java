@@ -1,5 +1,7 @@
 package com.orangeandbronze.enlistment;
 
+import java.time.LocalTime;
+
 import static org.apache.commons.lang3.Validate.notNull;
 
 class Schedule {
@@ -16,7 +18,6 @@ class Schedule {
 
     @Override
     public String toString() {
-
         return days + " " + period;
     }
 
@@ -31,7 +32,6 @@ class Schedule {
         Schedule schedule = (Schedule) o;
 
         if (days != schedule.days)
-
             return false;
 
         return period == schedule.period;
@@ -44,4 +44,22 @@ class Schedule {
 
         return result;
     }
+
+    public boolean overlapsWith(Schedule other) {
+        if (!days.equals(other.days)) {
+            return false;
+        }
+
+        LocalTime startTime = period.getStart().toLocalTime();
+        LocalTime endTime = period.getEnd().toLocalTime();
+
+        LocalTime otherStartTime = other.period.getStart().toLocalTime();
+        LocalTime otherEndTime = other.period.getEnd().toLocalTime();
+
+        return (startTime.isAfter(otherStartTime) && startTime.isBefore(otherEndTime)) ||
+                (endTime.isAfter(otherStartTime) && endTime.isBefore(otherEndTime)) ||
+                (startTime.equals(otherStartTime) && endTime.equals(otherEndTime));
+    }
+
+
 }

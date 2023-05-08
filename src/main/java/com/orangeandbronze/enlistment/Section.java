@@ -1,5 +1,7 @@
 package com.orangeandbronze.enlistment;
 
+import java.util.Objects;
+
 import static org.apache.commons.lang3.StringUtils.*;
 import static org.apache.commons.lang3.Validate.*;
 
@@ -39,35 +41,47 @@ class Section {
         }
     }
 
-    Subject getSubject() {
-        return this.subject;
+    void checkForRoomConflict(Section other) {
+        notNull(other);
+        if (this.room.equals(other.room) && this.schedule.equals(other.schedule)) {
+            throw new RoomConflictException("Room is in conflict between "
+                    + this + " and " + other + " at schedule " + schedule);
+        }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+    Subject getSubject() {
 
-        Section section = (Section) o;
-
-        return sectionID.equals(section.sectionID);
+        return this.subject;
     }
 
     public Room getRoom() {
         return room;
     }
 
+    public boolean canShareRoomWith(Section other) {
+        return !schedule.overlapsWith(other.schedule) || room.equals(other.room);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Section)) return false;
+        Section section = (Section) o;
+        return Objects.equals(sectionID, section.sectionID) && Objects.equals(subject, section.subject) && Objects.equals(schedule, section.schedule) && Objects.equals(room, section.room);
+    }
+
     @Override
     public int hashCode() {
-
-        return sectionID.hashCode();
+        return Objects.hash(sectionID, subject, schedule, room);
     }
 
     @Override
     public String toString() {
-
-        return sectionID + "Room: " + room;
+        return "Section{" +
+                "sectionId='" + sectionID + '\'' +
+                ", subject='" + subject + '\'' +
+                ", schedule=" + schedule +
+                ", room=" + room +
+                '}';
     }
 }
